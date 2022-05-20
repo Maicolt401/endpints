@@ -1,4 +1,3 @@
-const { MongoMemoryServer } = "mongodb-memory-server";
 const request = require("supertest");
 const { app } = require("..");
 const Kind = require("../../database/moduls/kingsSchema");
