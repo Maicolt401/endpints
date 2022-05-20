@@ -1,6 +1,3 @@
-const request = require("supertest");
-const { app } = require("..");
-const Kind = require("../../database/moduls/kingsSchema");
 const { listKings, getKind } = require("./kingsController");
 
 jest.mock("../../database/moduls/kingsSchema", () => ({
@@ -20,22 +17,6 @@ describe("Given a Kings Function", () => {
       const expectedStatusCode = 200;
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
-    });
-  });
-});
-
-describe("Given a get/listKind endpoint", () => {
-  describe("When it receive a request", () => {
-    test("the its should response with a 200 status code and list kind", async () => {
-      const listFind = {
-        id: 45,
-        kind: "moraleja",
-      };
-      const { body } = await request(app).get("/listKind/").send().expect(200);
-
-      const listKind = Kind.findById({ listFind });
-
-      expect(body.kind).toHaveBeenCalledWith(listKind);
     });
   });
 });
